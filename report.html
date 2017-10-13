@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.ajax({url: "http://localhost:3000/auditUser", 
+        headers: {'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdGF0dXMiOjIwMCwibWVzc2FnZSI6InRlc3R1c2VyQGdtYWlsLmNvbSIsInVzZXJzIjp7Il9pZCI6IjU5ZTA1YjVkZjdjMjgxMjZiZWIwYzQ5OCIsImZpcnN0bmFtZSI6InVtYXNoYW5rYXIiLCJsYXN0bmFtZSI6InNvbWFzZWthciIsImVtYWlsIjoidGVzdHVzZXJAZ21haWwuY29tIiwicGhvbmUiOjkxNzYwNjE5ODUsInBpbiI6IjEyMzQ1IiwicmFwaWRJRCI6IjRLbFR1RUZrQjhPK0sweFYydzI0L0xkcUowa3Y0Z3lKVEt5Z3dNZ2kvT0k9IiwiY3JlYXRlZF9hdCI6IkZyaSBPY3QgMTMgMjAxNyAxMTo1MToxNyBHTVQrMDUzMCAoSVNUKSIsIl9fdiI6MH0sImlhdCI6MTUwNzg3NjAxOSwiZXhwIjo2MDE1MDc4NzYwMTl9.141y0yaWv-kYmSwc-uV24Q_yFGEKEuQ56g-s1HOjF3U'}, 
+        success: function(result){
+            console.log(JSON.stringify(result))
+                $('#div1').append("<div class='cell'>Organisation</div>")
+               
+                    $('#div1').append("<div class='cell date'>Consent Recevied timestamp</div>")
+                  
+                    $('#div1').append("<div class='cell'>Document type</div>")
+                  
+                    $('#div1').append("<div class='cell'>Expiry</div>")
+
+                    $('#div1').append("<br>")
+                    $('#div1').append("_______________________________________________________")
+                    $('#div1').append("_______________________________________________________")
+                    $('#div1').append("<br>")
+
+            for(var i=0;i<result.org.length;i++){
+                $('#div1').append("<div class='cell'>"+result.org[i]+"</div>")
+                $('#div1').append("<div class='cell date'>"+result.dates[i]+"</div>")
+                $('#div1').append("<div class='cell'>"+result.doctypes[i]+"</div>")
+                $('#div1').append("<div class='cell'> NA </div>")
+                
+                $('#div1').append("<br>")
+                    $('#div1').append("_______________________________________________________")
+                    $('#div1').append("_______________________________________________________")
+                $('#div1').append("<br>")
+
+            }
+        }});
+    });
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>GDPR Compliance report</h2></div>
+
+<button>Get External Content</button>
+
+
+</body>
+
+<style>
+    .cell {width : 175px;
+        display: inline-block;}
+    .cell.date {width : 250px;
+        display: inline-block;}
+    
+ </style>
+
+
+</html>
+
+<!--
+user token :
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdGF0dXMiOjIwMCwibWVzc2FnZSI6InRlc3R1c2VyQGdtYWlsLmNvbSIsInVzZXJzIjp7Il9pZCI6IjU5ZTA1YjVkZjdjMjgxMjZiZWIwYzQ5OCIsImZpcnN0bmFtZSI6InVtYXNoYW5rYXIiLCJsYXN0bmFtZSI6InNvbWFzZWthciIsImVtYWlsIjoidGVzdHVzZXJAZ21haWwuY29tIiwicGhvbmUiOjkxNzYwNjE5ODUsInBpbiI6IjEyMzQ1IiwicmFwaWRJRCI6IjRLbFR1RUZrQjhPK0sweFYydzI0L0xkcUowa3Y0Z3lKVEt5Z3dNZ2kvT0k9IiwiY3JlYXRlZF9hdCI6IkZyaSBPY3QgMTMgMjAxNyAxMTo1MToxNyBHTVQrMDUzMCAoSVNUKSIsIl9fdiI6MH0sImlhdCI6MTUwNzg3NjAxOSwiZXhwIjo2MDE1MDc4NzYwMTl9.141y0yaWv-kYmSwc-uV24Q_yFGEKEuQ56g-s1HOjF3U
+
+Org Token :
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdGF0dXMiOjIwMCwibWVzc2FnZSI6InRlc3RvcmdAdGVzdG9yZy5jb20iLCJ1c2VycyI6eyJfaWQiOiI1OWUwNWNhNmY3YzI4MTI2YmViMGM0OTkiLCJvcmduYW1lIjoidGVzdG9yZyIsImVtYWlsIjoidGVzdG9yZ0B0ZXN0b3JnLmNvbSIsIm9yZ2NvbnRhY3QiOjkxNzYwNjE5ODUsInBpbiI6IjEyMzQ1IiwicmFwaWRJRCI6Ii94V2lvUjhUeXJGMitSckh3R0xkREoyVXp2bkFWRFBqR21ZMGRjZk1zRnc9IiwiY3JlYXRlZF9hdCI6IkZyaSBPY3QgMTMgMjAxNyAxMTo1Njo0NiBHTVQrMDUzMCAoSVNUKSIsIl9fdiI6MH0sImlhdCI6MTUwNzg3NjE4OCwiZXhwIjo2MTUwNzg3NjE4OH0.APEzpkfpqhxXAj6nLSdgXGSIVnIsem0nWCB9XiMBDvo
+/xWioR8TyrF2+RrHwGLdDJ2UzvnAVDPjGmY0dcfMsFw=
+
+-->
