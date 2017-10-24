@@ -19,13 +19,13 @@ Digital identity is the anticipated revolution verification of identity online. 
   1)git clone <repository-url> 
   
   2)cd (folder name)
+  
+  3)npm install
 
 =>run this command on one terminal:-
 
   1)./startFabric.sh
 
 =>run this command on second terminal:-
-
-  1)npm install
   
-  2)node app.js
+  1)node app.js
