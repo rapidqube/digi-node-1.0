@@ -8,11 +8,11 @@ Digital identity is the anticipated revolution verification of identity online. 
 
 =>Prerequisite:-
 
-1)git
+  1)git
 
-2)NodeJs(version 6.11)
+  2)NodeJs(version 6.11)
 
-3)docker
+  3)docker
 
 =>Steps to run application:-
 
