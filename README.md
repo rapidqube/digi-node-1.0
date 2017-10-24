@@ -13,6 +13,8 @@ Digital identity is the anticipated revolution verification of identity online. 
    2)NodeJs(version 6.11)
 
    3)docker
+   
+   4)Mongodb
 
 =>Steps to run application:-
 
